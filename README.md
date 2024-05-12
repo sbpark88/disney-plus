@@ -16,16 +16,16 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
     프로젝트 설명을 1줄로 간단하게 작성
     <!-- docs 가 필요시 주석을 해제하고 사용
     <br />
-    <a href="https://github.com/othneildrew/project-repository"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/othneildrew/disney-plus"><strong>Explore the docs »</strong></a>
     -->
     <br />
     <br />
-    <!-- 아래 경로를 [product-deploy-url] 로 교체하고 문서 내 모든 `project-repository`를 수정한다 -->
+    <!-- 아래 경로를 [product-deploy-url] 로 교체하고 문서 내 모든 `disney-plus`를 수정한다 -->
     <a href="javascript:void(0)">View Demo</a>
     ·
-    <a href="https://github.com/sbpark88/project-repository/projects">Project</a>
+    <a href="https://github.com/sbpark88/disney-plus/projects">Project</a>
     ·
-    <a href="https://github.com/sbpark88/project-repository/issues">Issue</a>
+    <a href="https://github.com/sbpark88/disney-plus/issues">Issue</a>
   </p>
 </div>
 
@@ -65,15 +65,13 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 
 [![Product Name Screen Shot][product-screenshot]][product-deploy-url]
 
-프로젝트에 대한 상세한 설명을 작성한다. 보기 쉽게 설명과 함께 목록화 해서 작성하는 것을 권장.
+디즈니 플러스 웹 클론
 
 특징:
-- Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-- Consequuntur iure mollitia natus nemo recusandae voluptates. 
+- Firebase 인증을 적용.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -83,7 +81,10 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 
 ![HTML5][HTML5 Icon]
 ![SCSS][SCSS Icon]
-![JavaScript][JavaScript Icon]
+![TypeScript][TypeScript Icon]
+![React][React Icon]
+![Styled Components][Styled Components Icon]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,7 +112,7 @@ brew install npm
 
 1. Clone the repo
    ```shell
-   git clone https://github.com/sbpark88/project-repository.git
+   git clone https://github.com/sbpark88/disney-plus.git
    ```
 2. Install NPM packages
    ```shell
@@ -141,11 +142,16 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] 로드맵 1
-- [ ] 로드맵 2
-- [ ] 로드맵 3
-    - [ ] 로드맵 3-1
-    - [ ] 로드맵 3-2
+- [ ] Layout
+- [ ] Navigation
+- [ ] Video
+- [ ] Image
+- [ ] Grid Design
+- [ ] Movie Modal
+- [ ] Swiper touch slider
+- [ ] Firebase Auth
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,7 +196,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ![HTML5][HTML5 Icon]
 ![CSS3][CSS3 Icon]
 ![SCSS][SCSS Icon]
+![Styled Components][Styled Components Icon]
+![MUI][MUI Icon]
 ![Tailwind CSS][Tailwind CSS Icon]
+![Redux][Redux Icon]
+![Redux Saga][Redux Saga Icon]
+![Recoil][Recoil Icon]
+![Zustand][Zustand Icon]
+![Next.js][Next.js Icon]
 ![JavaScript][JavaScript Icon]
 ![TypeScript][TypeScript Icon]
 ![RxJS][RxJS Icon]
@@ -232,7 +245,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [HTML5 Icon]:https://img.shields.io/badge/HTML5-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white
 [CSS3 Icon]:https://img.shields.io/badge/CSS3-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white
 [SCSS Icon]:https://img.shields.io/badge/Scss-CC6699.svg?&style=for-the-badge&logo=Sass&logoColor=white
+[Styled Components Icon]:https://img.shields.io/badge/Styled_Components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white
+[MUI Icon]:https://img.shields.io/badge/MUI-007FFF.svg?&style=for-the-badge&logo=MUI&logoColor=white
 [Tailwind CSS Icon]:https://img.shields.io/badge/Tailwind_CSS-06B6D4.svg?&style=for-the-badge&logo=TailwindCSS&logoColor=white
+[Redux Icon]:https://img.shields.io/badge/Redux-764ABC.svg?&style=for-the-badge&logo=Redux&logoColor=white
+[Redux Saga Icon]:https://img.shields.io/badge/Redux_Saga-999999.svg?&style=for-the-badge&logo=Redux-Saga&logoColor=white
+[Recoil Icon]:https://img.shields.io/badge/Recoil-3578E5.svg?&style=for-the-badge&logo=Recoil&logoColor=white
+[Zustand Icon]:https://img.shields.io/badge/Zustand-999999.svg?&style=for-the-badge&logo=Zustand&logoColor=white
+[Next.js Icon]:https://img.shields.io/badge/Next.js-000000.svg?&style=for-the-badge&logo=Next.js&logoColor=white
 [JavaScript Icon]:https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=white
 [TypeScript Icon]:https://img.shields.io/badge/TypeScript-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=white
 [RxJS Icon]:https://img.shields.io/badge/RxJS-A22846.svg?&style=for-the-badge&logo=ReactiveX&logoColor=white
