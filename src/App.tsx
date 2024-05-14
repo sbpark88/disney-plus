@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import styled from "styled-components";
 import Banner from "./components/Banner";
 import $K from "./constants";
+import Category from "./components/Category";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Container>
         <Nav />
         <Banner />
+        <Category />
       </Container>
     </div>
   );
