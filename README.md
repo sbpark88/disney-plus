@@ -142,8 +142,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Layout
-- [ ] Navigation
+- [X] Layout
+- [X] Navigation
 - [ ] Video
 - [ ] Image
 - [ ] Grid Design
