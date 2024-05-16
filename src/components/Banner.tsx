@@ -4,6 +4,7 @@ import { fetchMovieDetails, fetchNowPlaying } from "api/request";
 import { pipe } from "utils/fp";
 import { breakpoints } from "styles/media";
 import styled from "styled-components";
+import Loading from "./Loading";
 
 const Banner = () => {
   const [movie, setMovie] = useState<MovieDetail>();
@@ -19,10 +20,17 @@ const Banner = () => {
     return filteredMovies[randomIndex];
   };
 
-  const getRandomMovieOnNowPlaying = useCallback(() => {
-    const getMovie = pipe(fetchNowPlaying, pickOneMovie, fetchMovieDetails, setMovie);
-    getMovie("");
+  const getMovie = useCallback(() => {
+    return pipe(fetchNowPlaying, pickOneMovie, fetchMovieDetails, setMovie);
   }, [setMovie]);
+
+  const getRandomMovieOnNowPlaying = useCallback(() => {
+    try {
+      getMovie()();
+    } catch (error) {
+      console.error(error);
+    }
+  }, [getMovie]);
 
   useEffect(() => {
     const youtubeId = movie?.videos?.results[0]?.key;
@@ -37,7 +45,7 @@ const Banner = () => {
     setPlay(false);
   }, []);
 
-  return (
+  return movie ? (
     <Header $movie={movie}>
       <Contents>
         <Title>{movie?.title ?? movie?.original_title}</Title>
@@ -60,6 +68,10 @@ const Banner = () => {
         )}
       </YoutubeContainer>
     </Header>
+  ) : (
+    <EmptyContainer>
+      <Loading width="10vw" />
+    </EmptyContainer>
   );
 };
 
@@ -70,7 +82,7 @@ const ellipsis = (str?: string, to: number = 100): string => {
   return str.length > to ? str.substring(0, to) + "..." : str;
 };
 
-const Header = styled.header.attrs({ className: "banner" })<{ $movie: MovieDetail | undefined }>`
+const Header = styled.header.attrs({ className: "banner" })<{ $movie?: MovieDetail }>`
   position: relative;
   background-image: ${({ $movie }) => $movie && `url("https://image.tmdb.org/t/p/original/${$movie.backdrop_path}")`};
   background-position: top center;
@@ -85,6 +97,8 @@ const Header = styled.header.attrs({ className: "banner" })<{ $movie: MovieDetai
     background-image: ${({ $movie }) => $movie && `url("https://image.tmdb.org/t/p/w500/${$movie.backdrop_path}")`};
   }
 `;
+
+const EmptyContainer = styled(Header).attrs({ as: "div" })``;
 
 const Contents = styled.div.attrs({ className: "banner__contents" })`
   margin-left: 40px;
@@ -154,12 +168,15 @@ const Description = styled.p.attrs({ className: "banner__description" })`
 `;
 
 const FadeBottom = styled.div.attrs({ className: "banner--fadeBottom" })`
-  height: 7.4rem;
+  width: 100%;
+  height: 25%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), transparent);
 
-  ${breakpoints.large} {
-    position: absolute;
-    width: 100%;
-    height: 40rem;
+  ${breakpoints.small} {
+    height: 30%;
   }
 `;
 

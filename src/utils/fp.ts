@@ -2,11 +2,12 @@ type AnyFunction = (value: any) => any;
 
 export const compose =
   (...fns: AnyFunction[]) =>
-  <T>(initValue: T) =>
+  <T>(initValue?: T) =>
     fns.reduceRight((acc, fn) => (acc instanceof Promise ? acc.then(fn) : fn(acc)), initValue);
+
 export const pipe =
   (...fns: AnyFunction[]) =>
-  <T>(initValue: T) =>
+  <T>(initValue?: T) =>
     fns.reduce((acc, fn) => (acc instanceof Promise ? acc.then(fn) : fn(acc)), initValue);
 
 const curry = (fn: Function) => {

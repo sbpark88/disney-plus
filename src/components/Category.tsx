@@ -4,7 +4,13 @@ import { breakpoints } from "../styles/media";
 import Card, { CardItem } from "./Card";
 
 const Category = () => {
-  return <Container>{cardItems.map(Card)}</Container>;
+  return (
+    <Container>
+      {cardItems.map((cardItem) => (
+        <Card key={cardItem.imgSrc} {...cardItem} />
+      ))}
+    </Container>
+  );
 };
 
 export default Category;

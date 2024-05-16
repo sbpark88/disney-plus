@@ -20,6 +20,7 @@ export interface Movie {
   poster_path: string | null;
   release_date: string;
   title: string;
+  media_type: string;
   video: boolean;
   vote_average: number;
   vote_count: number;

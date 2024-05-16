@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Banner from "./components/Banner";
 import $K from "./constants";
 import Category from "./components/Category";
+import Row from "./components/Row";
+import { fetchActionMovies, fetchComedyMovies, fetchTopRated, fetchTrending } from "./api/request";
 
 function App() {
   return (
@@ -13,6 +15,10 @@ function App() {
         <Nav />
         <Banner />
         <Category />
+        <Row title="Trending Now" id="TN" fetchClosure={fetchTrending} />
+        <Row title="Top Rated" id="TR" fetchClosure={fetchTopRated} />
+        <Row title="Action Movies" id="AM" fetchClosure={fetchActionMovies} />
+        <Row title="Comedy Movies" id="CM" fetchClosure={fetchComedyMovies} />
       </Container>
     </div>
   );
