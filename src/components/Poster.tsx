@@ -1,23 +1,29 @@
-import React, { FunctionComponent, useCallback } from "react";
+import React, { useState } from "react";
 import { Movie } from "../api/MovieDTO";
 import styled from "styled-components";
 import { breakpoints } from "../styles/media";
+import Modal, { CloseModalProps } from "./Modal";
+import $K from "../constants";
+import { TitleH2 } from "./Atomic";
 
 interface Props {
   className: string;
   movie: Movie;
 }
 
-const Poster: FunctionComponent<Props> = ({ className, movie }) => {
-  const onImgClick = useCallback((event: React.MouseEvent<HTMLImageElement>) => {}, []);
+const Poster: React.FC<Props> = ({ className, movie }) => {
+  const [openModal, setOpenModal] = useState(false);
 
   return (
-    <Image
-      className={className ?? "poster"}
-      src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-      alt={movie.title}
-      onClick={onImgClick}
-    ></Image>
+    <>
+      <Image
+        className={className ?? "poster"}
+        src={`${$K.Url.PosterSmall}${movie.backdrop_path}`}
+        alt={movie.title}
+        onClick={() => setOpenModal(true)}
+      ></Image>
+      {openModal && <MovieModal closeModal={() => setOpenModal(false)} movie={movie} />}
+    </>
   );
 };
 
@@ -43,3 +49,65 @@ const Image = styled.img`
     transform: scale(1.08);
   }
 `;
+
+interface ModalProps extends CloseModalProps {
+  movie: Movie;
+}
+
+const MovieModal: React.FC<ModalProps> = ({
+  closeModal,
+  movie: { backdrop_path, title, overview, release_date, vote_average },
+}) => {
+  return (
+    <Modal closeModal={closeModal}>
+      <ModalImage src={`${$K.Url.PosterOriginal}${backdrop_path}`}></ModalImage>
+      <ModalContent>
+        <ModalDetails>
+          <ModalUserForYou>{random80to100()}% for you</ModalUserForYou>
+        </ModalDetails>
+        {release_date}
+        <ModalTitle>{title}</ModalTitle>
+        <ModalOverview>⭐️ {vote_average}</ModalOverview>
+        <ModalOverview>{overview}</ModalOverview>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+const ModalImage = styled.img.attrs({ className: "modal__poster-img" })`
+  position: sticky;
+  top: 0;
+  width: 100%;
+`;
+
+const ModalContent = styled.div.attrs({ className: "modal__content" })`
+  padding: 40px;
+  overflow-y: auto;
+
+  ${breakpoints.small} {
+    padding: 20px;
+  }
+`;
+
+const ModalDetails = styled.p.attrs({ className: "modal__details" })`
+  font-weight: 600;
+  font-size: 18px;
+`;
+
+const ModalUserForYou = styled.p.attrs({ className: "modal__user-for-you" })`
+  color: #46d369;
+  margin-bottom: 20px;
+`;
+
+const ModalTitle = styled(TitleH2).attrs({ className: "modal__title" })`
+  font-size: 2.5rem;
+  margin: 5px 0 20px;
+`;
+
+const ModalOverview = styled.p.attrs({ className: "modal__overview" })`
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+`;
+
+const random80to100 = () => parseInt(`${Math.random() * 21 + 80}`);

@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import styled from "styled-components";
 import Poster from "./Poster";
 import { breakpoints } from "../styles/media";
+import { TitleH2 } from "./Atomic";
 
 interface Props {
   title: string;
@@ -63,9 +64,7 @@ const Container = styled.section`
   position: relative;
 `;
 
-const Title = styled.h2`
-  font-size: 1.8rem;
-  font-weight: 800;
+const Title = styled(TitleH2)`
   margin: 3rem 0 1rem;
 `;
 

@@ -5,6 +5,8 @@ import { pipe } from "utils/fp";
 import { breakpoints } from "styles/media";
 import styled from "styled-components";
 import Loading from "./Loading";
+import $K from "../constants";
+import { TitleH1 } from "./Atomic";
 
 const Banner = () => {
   const [movie, setMovie] = useState<MovieDetail>();
@@ -84,7 +86,7 @@ const ellipsis = (str?: string, to: number = 100): string => {
 
 const Header = styled.header.attrs({ className: "banner" })<{ $movie?: MovieDetail }>`
   position: relative;
-  background-image: ${({ $movie }) => $movie && `url("https://image.tmdb.org/t/p/original/${$movie.backdrop_path}")`};
+  background-image: ${({ $movie }) => $movie && `url("${$K.Url.PosterOriginal}${$movie.backdrop_path}")`};
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -94,7 +96,7 @@ const Header = styled.header.attrs({ className: "banner" })<{ $movie?: MovieDeta
     height: 600px;
   }
   ${breakpoints.small} {
-    background-image: ${({ $movie }) => $movie && `url("https://image.tmdb.org/t/p/w500/${$movie.backdrop_path}")`};
+    background-image: ${({ $movie }) => $movie && `url("${$K.Url.PosterSmall}${$movie.backdrop_path}")`};
   }
 `;
 
@@ -111,9 +113,7 @@ const Contents = styled.div.attrs({ className: "banner__contents" })`
   }
 `;
 
-const Title = styled.h1.attrs({ className: "banner__title" })`
-  font-size: 3rem;
-  font-weight: 800;
+const Title = styled(TitleH1).attrs({ className: "banner__title" })`
   padding-bottom: 0.5rem;
 
   ${breakpoints.small} {
