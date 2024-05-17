@@ -62,9 +62,7 @@ const MovieModal: React.FC<ModalProps> = ({
     <Modal closeModal={closeModal}>
       <ModalImage src={`${$K.Url.PosterOriginal}${backdrop_path}`}></ModalImage>
       <ModalContent>
-        <ModalDetails>
-          <ModalUserForYou>{random80to100()}% for you</ModalUserForYou>
-        </ModalDetails>
+        <ModalUserForYou>{random80to100()}% for you</ModalUserForYou>
         {release_date}
         <ModalTitle>{title}</ModalTitle>
         <ModalOverview>⭐️ {vote_average}</ModalOverview>
@@ -80,21 +78,20 @@ const ModalImage = styled.img.attrs({ className: "modal__poster-img" })`
   width: 100%;
 `;
 
-const ModalContent = styled.div.attrs({ className: "modal__content" })`
+const ModalContent = styled.div.attrs({ className: "modal__content hide-scroll" })`
   padding: 40px;
+  bottom: 0;
   overflow-y: auto;
+  flex-grow: 1;
 
   ${breakpoints.small} {
     padding: 20px;
   }
 `;
 
-const ModalDetails = styled.p.attrs({ className: "modal__details" })`
+const ModalUserForYou = styled.p.attrs({ className: "modal__user-for-you" })`
   font-weight: 600;
   font-size: 18px;
-`;
-
-const ModalUserForYou = styled.p.attrs({ className: "modal__user-for-you" })`
   color: #46d369;
   margin-bottom: 20px;
 `;

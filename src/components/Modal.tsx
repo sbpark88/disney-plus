@@ -39,17 +39,19 @@ const Wrap = styled.div.attrs({ className: "wrapper-modal" })`
 `;
 
 const Inner = styled.div.attrs({ className: "modal" })`
-  position: absolute;
+  position: fixed;
   top: 15%;
   left: 20%;
   max-width: 800px;
   min-width: 400px;
   width: 60%;
   height: 70%;
-  //height: 50%;
   background-color: #555;
   border-radius: 20px;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: hidden;
   z-index: 9;
   animation: fadeIn 0.4s;
 
@@ -63,13 +65,6 @@ const Inner = styled.div.attrs({ className: "modal" })`
       transform: scale(1);
     }
   }
-
-  //-ms-overflow-style: none;
-  //scrollbar-width: none;
-  //&::-webkit-scrollbar {
-  //  display: none;
-  //  visibility: hidden;
-  //}
 `;
 
 const CloseBtn = styled.div.attrs({ className: "modal-close" })`

@@ -18,3 +18,12 @@ div,
 span {
   word-break: keep-all;
 }
+
+.hide-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+    visibility: hidden;
+  }
+}
