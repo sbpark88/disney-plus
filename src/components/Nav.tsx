@@ -28,7 +28,7 @@ const NavWrapper = styled.nav<{ $show: boolean }>`
   left: 0;
   right: 0;
   height: ${$K.Style.NavHeight};
-  background-color: ${({ $show }) => ($show ? "#090b13" : "transparent")};
+  background-color: ${({ $show }) => ($show ? "rgba(9,11,19,0.9)" : "#090b13")};
   display: flex;
   justify-content: space-between;
   padding: 0 36px;

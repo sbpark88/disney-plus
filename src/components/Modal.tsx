@@ -1,9 +1,9 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { ChildrenComponent } from "./interfaces/common";
 
-export interface CloseModalProps {
+export interface CloseModalProps extends ChildrenComponent {
   closeModal: () => void;
-  children?: ReactNode;
 }
 
 const Modal: React.FC<CloseModalProps> = ({ closeModal, children }) => {
