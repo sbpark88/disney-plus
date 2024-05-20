@@ -5,9 +5,11 @@ import { fetchSearch } from "../../api/request";
 import { Movie, MovieList } from "../../api/MovieDTO";
 import styled from "styled-components";
 import $K from "../../constants";
+import useDebounce from "../../hooks/useDebounce";
 
 const SearchPage: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const debouncedSearchParams = useDebounce(searchParams.get("keyword"));
   const [searchResults, setSearchResults] = useState<Movie[]>();
 
   const getMovies = (movieList: MovieList) => {
@@ -19,19 +21,19 @@ const SearchPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!searchParams.get("keyword")) setSearchResults([]);
+    if (!debouncedSearchParams) setSearchResults([]);
 
-    const query = { query: searchParams.get("keyword")! };
+    const query = { query: debouncedSearchParams };
     try {
       getSearch()(query);
     } catch (error) {
       console.error(error);
     }
-  }, [searchParams]);
+  }, [debouncedSearchParams, getSearch]);
 
   return (
     <>
-      {searchResults !== undefined ? (
+      {debouncedSearchParams !== null ? (
         <DisplayResults movies={searchResults} />
       ) : (
         <NoResults searchText={searchParams.get("keyword")} />
@@ -55,9 +57,12 @@ const DisplayResults: React.FC<DisplayResultsProps> = ({ movies }) => {
     return posterIsAvailable && typeIsNotPerson;
   }, []);
 
-  const goToDetails = useCallback((movieId: number) => {
-    navigate(`/movie/${movieId}`);
-  }, []);
+  const goToDetails = useCallback(
+    (movieId: number) => {
+      navigate(`/movie/${movieId}`);
+    },
+    [navigate],
+  );
 
   return (
     <Container>
