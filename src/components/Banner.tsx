@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { MovieDetail, MovieList } from "api/MovieDTO";
+import { Movie, MovieDetail, MovieList } from "api/MovieDTO";
 import { fetchMovieDetails, fetchNowPlaying } from "api/request";
 import { pipe } from "utils/fp";
 import { breakpoints } from "styles/media";
@@ -23,7 +23,7 @@ const Banner = () => {
   };
 
   const getMovie = useCallback(() => {
-    return pipe(fetchNowPlaying, pickOneMovie, fetchMovieDetails, setMovie);
+    return pipe(fetchNowPlaying, pickOneMovie, (movie: Movie) => fetchMovieDetails(movie.id), setMovie);
   }, [setMovie]);
 
   const getRandomMovieOnNowPlaying = useCallback(() => {

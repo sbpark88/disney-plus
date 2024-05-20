@@ -1,4 +1,4 @@
-import { Movie, MovieDetail, MovieList } from "./MovieDTO";
+import { MovieDetail, MovieList } from "./MovieDTO";
 import { AxiosResponse } from "axios";
 import $axios, { defaultParams } from "./axios";
 
@@ -33,8 +33,8 @@ export const fetchTopRated = fetchTmdb<MovieList>(URL.fetchTopRated);
 export const fetchActionMovies = fetchTmdb<MovieList>(URL.fetchActionMovies);
 export const fetchComedyMovies = fetchTmdb<MovieList>(URL.fetchComedyMovies);
 
-export const fetchMovieDetails = async (movie: Movie): Promise<MovieDetail> => {
-  const { data: movieDetail } = await $axios.get<MovieDetail>(`movie/${movie.id}`, {
+export const fetchMovieDetails = async (movieId: string | number): Promise<MovieDetail> => {
+  const { data: movieDetail } = await $axios.get<MovieDetail>(`movie/${movieId}`, {
     params: { append_to_response: "videos" },
   });
   return movieDetail;

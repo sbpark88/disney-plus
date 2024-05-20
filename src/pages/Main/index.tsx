@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import $K from "../../constants";
 import Banner from "../../components/Banner";
 import Category from "../../components/Category";
 import Row from "../../components/Row";
