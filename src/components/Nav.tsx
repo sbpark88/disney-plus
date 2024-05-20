@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import $K from "../constants";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const searchMovie = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+    navigate(`/search?keyword=${event.target.value}`);
+  }, []);
 
   useEffect(() => {
     const hideNav = () => (window.scrollY > 50 ? setShow(true) : setShow(false));
@@ -16,6 +25,11 @@ const Nav = () => {
       <Logo>
         <img src="/images/logo.svg" alt="Disney Plus Logo" onClick={() => (window.location.href = "/")} />
       </Logo>
+      {location.pathname === "/login" ? (
+        <Login>login</Login>
+      ) : (
+        <Search placeholder="검색어를 입력해주세요" onChange={searchMovie}></Search>
+      )}
     </NavWrapper>
   );
 };
@@ -31,6 +45,7 @@ const NavWrapper = styled.nav<{ $show: boolean }>`
   background-color: ${({ $show }) => ($show ? "rgba(9,11,19,0.9)" : "#090b13")};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 36px;
   letter-spacing: 16px;
   z-index: 9;
@@ -48,4 +63,33 @@ const Logo = styled.a`
     display: block;
     width: 100%;
   }
+`;
+
+const Login = styled.a`
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  border: 1px solid #f9f9f9;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: #f9f9f9;
+    color: #000;
+    border-color: transparent;
+  }
+`;
+
+const Search = styled.input.attrs({ className: "nav__input-search" })`
+  margin: 0 auto;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.58);
+  border: 1px solid #938f8f;
+  border-radius: 5px;
+  padding: 3px 5px;
+  outline: none;
+  color: #fff;
 `;

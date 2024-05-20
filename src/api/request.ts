@@ -1,6 +1,6 @@
 import { Movie, MovieDetail, MovieList } from "./MovieDTO";
 import { AxiosResponse } from "axios";
-import $axios from "./axios";
+import $axios, { defaultParams } from "./axios";
 
 const URL = {
   fetchNowPlaying: "/movie/now_playing",
@@ -11,12 +11,18 @@ const URL = {
   fetchHorrorMovies: "/discover/movie?with_genres=27",
   fetchRomanceMovies: "/discover/movie?with_genres=10749",
   fetchDocumentaries: "/discover/movie?with_genres=99",
+  fetchSearch: "/search/movie?include_adult=false",
 };
 
 const fetchTmdb =
   <ReturnType>(url: string) =>
-  async () => {
-    const response: AxiosResponse<ReturnType> = await $axios.get<ReturnType>(url);
+  async (params?: Record<string, string>) => {
+    const response: AxiosResponse<ReturnType> = await $axios.get<ReturnType>(url, {
+      params: {
+        ...defaultParams,
+        ...params,
+      },
+    });
     if (response.status !== 200) throw new TmdbAxiosError(response);
     return response.data;
   };
@@ -33,6 +39,9 @@ export const fetchMovieDetails = async (movie: Movie): Promise<MovieDetail> => {
   });
   return movieDetail;
 };
+export const fetchSearch = fetchTmdb<MovieDetail>(URL.fetchSearch);
+
+// export const fetchSearch = async;
 
 class TmdbAxiosError extends Error {
   constructor(props: any) {
