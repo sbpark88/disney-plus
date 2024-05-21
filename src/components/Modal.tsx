@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ChildrenComponent } from "./interfaces/common";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 export interface CloseModalProps extends ChildrenComponent {
   closeModal: () => void;
 }
 
 const Modal: React.FC<CloseModalProps> = ({ closeModal, children }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(modalRef, closeModal);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -17,7 +22,7 @@ const Modal: React.FC<CloseModalProps> = ({ closeModal, children }) => {
   return (
     <div className="presentation" role="presentation">
       <Wrap>
-        <Inner>
+        <Inner ref={modalRef}>
           <CloseBtn onClick={closeModal}>
             <div></div>
             <div></div>
