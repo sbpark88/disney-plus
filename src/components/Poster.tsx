@@ -33,6 +33,9 @@ const Image = styled.img`
   width: 30vw;
   object-fit: contain;
   transition: all 0.4s;
+  border-radius: 10px;
+  overflow: hidden;
+  transform-origin: center;
 
   ${breakpoints.xLarge} {
     width: 400px;

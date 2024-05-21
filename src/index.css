@@ -1,3 +1,10 @@
+:root {
+  --swiper-pagination-color: #9f9f9f;
+  --swiper-navigation-color: #b4b4b4;
+  --swiper-theme-color: #9f9f9f;
+  --swiper-navigation-size: max(30px, 3vw) !important;
+}
+
 html {
   font-size: 30px;
 }
