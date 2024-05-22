@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ChildrenComponent } from "./interfaces/common";
 import useOnClickOutside from "../hooks/useOnClickOutside";
+import { createPortal } from "react-dom";
 
 export interface CloseModalProps extends ChildrenComponent {
   closeModal: () => void;
@@ -19,24 +20,23 @@ const Modal: React.FC<CloseModalProps> = ({ closeModal, children }) => {
     };
   }, []);
 
-  return (
-    <div className="presentation" role="presentation">
-      <Wrap>
-        <Inner ref={modalRef}>
-          <CloseBtn onClick={closeModal}>
-            <div></div>
-            <div></div>
-          </CloseBtn>
-          {children}
-        </Inner>
-      </Wrap>
-    </div>
+  return createPortal(
+    <Wrap>
+      <Inner ref={modalRef}>
+        <CloseBtn onClick={closeModal}>
+          <div></div>
+          <div></div>
+        </CloseBtn>
+        {children}
+      </Inner>
+    </Wrap>,
+    document.getElementById("modal-root")!,
   );
 };
 
 export default Modal;
 
-const Wrap = styled.div.attrs({ className: "wrapper-modal" })`
+const Wrap = styled.div.attrs({ className: "wrapper-modal", role: "presentation" })`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.7);
@@ -44,9 +44,10 @@ const Wrap = styled.div.attrs({ className: "wrapper-modal" })`
 `;
 
 const Inner = styled.div.attrs({ className: "modal" })`
-  position: fixed;
-  top: 15%;
-  left: 20%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 800px;
   min-width: 400px;
   width: 60%;
@@ -63,11 +64,11 @@ const Inner = styled.div.attrs({ className: "modal" })`
   @keyframes fadeIn {
     0% {
       opacity: 0;
-      transform: scale(0.5);
+      transform: translate(-50%, -50%) scale(0.5);
     }
     100% {
       opacity: 1;
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 `;
