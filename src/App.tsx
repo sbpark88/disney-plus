@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} errorElement={<NotFound />}>
           <Route errorElement={<NotFound />}>
-            <Route index element={<Navigate to="login" replace={true} />} />
+            <Route index element={<Navigate to="main" replace={true} />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="main" element={<MainPage />} />
             <Route path="search" element={<SearchPage />} />

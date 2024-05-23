@@ -2,17 +2,21 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import $K from "../constants";
 import { useLocation, useNavigate } from "react-router-dom";
+import { googleSignIn } from "../utils/auth/google";
+import UserInfo from "./UserInfo";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
-  const [searchText, setSearchText] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
-  const searchMovie = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(event.target.value);
-    navigate(`/search?keyword=${event.target.value}`);
-  }, []);
+  const searchMovie = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const searchText = event.target.value.trim();
+      searchText ? navigate(`/search?keyword=${searchText}`) : navigate("/main");
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     const hideNav = () => (window.scrollY > 50 ? setShow(true) : setShow(false));
@@ -20,16 +24,19 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", hideNav);
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <NavWrapper $show={show}>
       <Logo>
         <img src="/images/logo.svg" alt="Disney Plus Logo" onClick={() => (window.location.href = "/")} />
       </Logo>
       {location.pathname === "/login" ? (
-        <Login>login</Login>
+        <Login onClick={googleSignIn}>login</Login>
       ) : (
         <Search placeholder="검색어를 입력해주세요" onChange={searchMovie}></Search>
       )}
+      <UserInfo />
     </NavWrapper>
   );
 };

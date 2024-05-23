@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { Reset } from "styled-reset";
 import { BrowserRouter } from "react-router-dom";
+import "./firebase";
 
 const root = ReactDOM.createRoot(document.getElementById("app-root") as HTMLElement);
 root.render(
@@ -15,5 +15,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>,
 );
-
-reportWebVitals();
