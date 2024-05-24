@@ -7,13 +7,13 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 <div align="center"> <!-- Obsolete attribute 는 일반 HTML 문서에서 해당되는거고, 깃허브의 마크다운에는 style text-align 이 적용되지 않고 align 이 적용된다. -->
   <a href="https://github.com/sbpark88">
     <!-- images 디렉토리의 `logo.png` 파일을 업데이트한다. -->
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Starbucks</h3>
 
   <p align="center">
-    프로젝트 설명을 1줄로 간단하게 작성
+    디즈니 플러스 클론과 firebase 인증을 사용한 로그인
     <!-- docs 가 필요시 주석을 해제하고 사용
     <br />
     <a href="https://github.com/othneildrew/disney-plus"><strong>Explore the docs »</strong></a>
@@ -69,6 +69,7 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 
 특징:
 - Firebase 인증을 적용.
+- Firebase functions 는 Blaze 요금제 변경 문제로 `firebase-functions` 브랜치에 따로 생성.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
