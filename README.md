@@ -69,7 +69,8 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 
 특징:
 - Firebase 인증을 적용.
-- Firebase functions 는 Blaze 요금제 변경 문제로 `firebase-functions` 브랜치에 따로 생성.
+- Firebase Functions 를 적용. 리액트와 Firebase Functions 는 각각 실행해야한다. 따라서 start 명령어를 둘로 나누고, `&` 연산자를 
+  사용해 두 명령어를 동시에 실행하도록 했다.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -145,12 +146,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 - [X] Layout
 - [X] Navigation
-- [ ] Video
-- [ ] Image
-- [ ] Grid Design
-- [ ] Movie Modal
-- [ ] Swiper touch slider
-- [ ] Firebase Auth
+- [X] Video
+- [X] Image
+- [X] Grid Design
+- [X] Movie Modal
+- [X] Swiper touch slider
+- [X] Firebase Auth
 
 
 
