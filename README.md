@@ -21,7 +21,7 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
     <br />
     <br />
     <!-- 아래 경로를 [product-deploy-url] 로 교체하고 문서 내 모든 `disney-plus`를 수정한다 -->
-    <a href="javascript:void(0)">View Demo</a>
+    <a href="https://disney-plus-f06ec.web.app/login">View Demo</a>
     ·
     <a href="https://github.com/sbpark88/disney-plus/projects">Project</a>
     ·
@@ -69,9 +69,13 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 
 특징:
 - Firebase 인증을 적용.
-- Firebase Functions 를 적용. 리액트와 Firebase Functions 는 각각 실행해야한다. 따라서 start 명령어를 둘로 나누고, `&` 연산자를 
-  사용해 두 명령어를 동시에 실행하도록 했다.
-
+- .env 는 Firebase web 에서 따로 등록할 필요 없이 firebase-cli 명령어로 배포하면 로컬의 .env 를 사용해 배포가 된다.
+- Firebase Functions 를 적용. 로컬에서 에뮬레이트 시 리액트와 Firebase Functions 는 각각 실행해야한다. 
+  따라서 start 명령어를 둘로 나누고, `&` 연산자를 사용해 두 명령어를 동시에 실행하도록 했다.
+- Firebase Functions 의 배포된 요청 URL 은 다음과 같은 형식을 갖는다.  
+  - https://[region]-[project id].cloudfounctions.net/[function name]
+  - 예를 들어 region 이 `us-central` 이고, project id 가 `disney-plus-f06ed` 이고, 함수 이름이 `nowPlaying`일 경우   
+    요청 주소는 `https://us-central1-disney-plus-f06ec.cloudfunctions.net/nowPlaying` 가 된다.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,6 +90,7 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
 ![TypeScript][TypeScript Icon]
 ![React][React Icon]
 ![Styled Components][Styled Components Icon]
+![Firebase][Firebase Icon]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -191,10 +196,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- images 디렉토리의 `screenshot.png` 파일을 업데이트한다. 배포된 프로젝트 경로를 추가한다. -->
 [product-screenshot]:images/screenshot.png
-[product-deploy-url]:about:blank
+[product-deploy-url]:https://disney-plus-f06ec.web.app/login
 
 
 <!--
+Icons
 ![HTML5][HTML5 Icon]
 ![CSS3][CSS3 Icon]
 ![SCSS][SCSS Icon]
@@ -226,7 +232,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ![Python][Python Icon]
 ![Docker][Docker Icon]
 ![Azure DevOps][Azure DevOps Icon]
+![AWS][AWS Icon]
 ![AWS EC2][AWS EC2 Icon]
+![AWS Lambda][AWS Lambda Icon]
+![Netlify][Netlify Icon]
+![Vercel][Vercel Icon]
+![Firebase][Firebase Icon]
 ![Raspberry Pi][Raspberry Pi Icon]
 ![Oracle][Oracle Icon]
 ![PostgreSQL][PostgreSQL Icon]
@@ -240,9 +251,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [![Gmail Badge][Gmail Icon]][My Email]
 -->
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!--
+https://simpleicons.org/ 에서 검색해서 추가
+-->
 
 [HTML5 Icon]:https://img.shields.io/badge/HTML5-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white
 [CSS3 Icon]:https://img.shields.io/badge/CSS3-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white
@@ -275,7 +286,12 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Python Icon]:https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white
 [Docker Icon]:https://img.shields.io/badge/Docker-2496ED.svg?&style=for-the-badge&logo=Docker&logoColor=white
 [Azure DevOps Icon]:https://img.shields.io/badge/Azure_DevOps-0078D7.svg?&style=for-the-badge&logo=azuredevops&logoColor=white
-[AWS EC2 Icon]:https://img.shields.io/badge/Aws_EC2-FF9900.svg?&style=for-the-badge&logo=amazonec2&logoColor=white
+[AWS Icon]:https://img.shields.io/badge/Amazon_AWS-232F3E.svg?&style=for-the-badge&logo=amazoneaws&logoColor=white
+[AWS EC2 Icon]:https://img.shields.io/badge/AWS_EC2-FF9900.svg?&style=for-the-badge&logo=amazonec2&logoColor=white
+[AWS Lambda Icon]:https://img.shields.io/badge/AWS_Lambda-FF9900.svg?&style=for-the-badge&logo=awslambda&logoColor=white
+[Netlify Icon]:https://img.shields.io/badge/Netlify-00C7B7.svg?&style=for-the-badge&logo=netlify&logoColor=white
+[Vercel Icon]:https://img.shields.io/badge/Vercel-000000.svg?&style=for-the-badge&logo=vercel&logoColor=white
+[Firebase Icon]:https://img.shields.io/badge/Firebase-FFCA28.svg?&style=for-the-badge&logo=firebase&logoColor=white
 [Raspberry Pi Icon]:https://img.shields.io/badge/Raspberry_Pi-A22846.svg?&style=for-the-badge&logo=RaspberryPi&logoColor=white
 [Oracle Icon]:https://img.shields.io/badge/Oracle-F80000.svg?&style=for-the-badge&logo=Oracle&logoColor=white
 [PostgreSQL Icon]:https://img.shields.io/badge/PostgreSQL-4169E1.svg?&style=for-the-badge&logo=PostgreSQL&logoColor=white

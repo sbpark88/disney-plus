@@ -26,9 +26,9 @@ const Banner = () => {
     return pipe(fetchNowPlaying, pickOneMovie, (movie: Movie) => fetchMovieDetails(movie.id), setMovie);
   }, [setMovie]);
 
-  const getRandomMovieOnNowPlaying = useCallback(() => {
+  const getRandomMovieOnNowPlaying = useCallback(async () => {
     try {
-      getMovie()();
+      await getMovie()();
     } catch (error) {
       console.error(error);
     }
