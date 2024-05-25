@@ -19,13 +19,17 @@ const TMDB_PATH = {
   fetchSearch: "/search/movie?include_adult=false",
 };
 
+const OPIONS = {
+  cors: ["https://disney-plus-f06ec.web.app"],
+};
+
 const DEFAULT_PARAMS = {
   api_key: process.env.TMDB_API_KEY,
   language: "ko-KR",
 } as Record<string, string>;
 
 const fetchTmdb = <ReturnType>(url: string) =>
-  onRequest(async (req, res) => {
+  onRequest(OPIONS, async (req, res) => {
     const params = req.query as Record<string, string>;
     const requestUrl = [DEFAULT_PARAMS, params].reduce(appendQuery, BASE_URL + url);
 
@@ -43,7 +47,7 @@ export const actionMovies = fetchTmdb<MovieList>(TMDB_PATH.fetchActionMovies);
 export const comedyMovies = fetchTmdb<MovieList>(TMDB_PATH.fetchComedyMovies);
 export const search = fetchTmdb<MovieDetail>(TMDB_PATH.fetchSearch);
 
-export const movieDetails = onRequest(async (req, res) => {
+export const movieDetails = onRequest(OPIONS, async (req, res) => {
   const path = req.url;
   const requestUrl = [DEFAULT_PARAMS].reduce(appendQuery, BASE_URL + "/movie" + path);
 

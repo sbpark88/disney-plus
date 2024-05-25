@@ -76,6 +76,9 @@ https://github.com/othneildrew/Best-README-Template 를 기본으로 하여 수�
   - https://[region]-[project id].cloudfounctions.net/[function name]
   - 예를 들어 region 이 `us-central` 이고, project id 가 `disney-plus-f06ed` 이고, 함수 이름이 `nowPlaying`일 경우   
     요청 주소는 `https://us-central1-disney-plus-f06ec.cloudfunctions.net/nowPlaying` 가 된다.
+- Firebase Functions 의 CORS 는 [Firebase Function HTTP 옵션] 을 참고한다.
+
+[Firebase Function HTTP 옵션]:https://firebase.google.com/docs/functions/http-events?hl=ko&gen=2nd#additional-https-options
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,7 +132,31 @@ brew install npm
    ```shell
    npm run start
    ```
-   
+
+<br>
+
+Firebase Hosting 을 통한 배포시 production 환경으로 바꿔주는 작업이 필요하므로 다음을 따르도록 한다.
+
+1. CLI 에 프로젝트 등록
+
+```shell
+firebase use --add
+```
+
+2. `prod`로 변경(prod, dev 두 가지 설정이 가능)
+
+```shell
+firebase use prod
+```
+
+3. 배포하기
+
+```shell
+npm run build
+firebase deploy
+```
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
