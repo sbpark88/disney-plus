@@ -20,7 +20,7 @@ const TMDB_PATH = {
 };
 
 const OPIONS = {
-  cors: ["https://disney-plus-f06ec.web.app"],
+  cors: process.env.FUNCTIONS_CORS,
 };
 
 const DEFAULT_PARAMS = {

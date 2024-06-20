@@ -30,7 +30,7 @@ const Modal: React.FC<CloseModalProps> = ({ closeModal, children }) => {
         {children}
       </Inner>
     </Wrap>,
-    document.getElementById("modal-root")!,
+    document.body,
   );
 };
 
